@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TripMind AI — Intelligent Group Travel Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+
+  <!-- Animated background -->
+  <div class="bg-orbs">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-logo">
+      <span class="nav-icon">✦</span>
+      TripMind <span class="nav-ai">AI</span>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-tag">✦ AI-Powered Travel Planning</div>
+    <h1 class="hero-title">
+      Every traveler.<br/>
+      <em>One perfect trip.</em>
+    </h1>
+    <p class="hero-sub">Tell us who's coming — kids, teens, adults, seniors — we'll build a personalized itinerary for everyone, instantly.</p>
+
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">4x</span><span class="stat-label">Faster planning</span></div>
+      <div class="stat-div"></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Age-appropriate</span></div>
+      <div class="stat-div"></div>
+      <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Destinations</span></div>
+    </div>
+
+    <a href="#planner" class="hero-cta">
+      Start planning
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </section>
+
+  <!-- Feature pills -->
+  <div class="features-strip">
+    <div class="features-inner">
+      <div class="feat">🗺️ Day-by-day itinerary</div>
+      <div class="feat-dot">·</div>
+      <div class="feat">🎯 Age-appropriate activities</div>
+      <div class="feat-dot">·</div>
+      <div class="feat">💰 Budget breakdown</div>
+      <div class="feat-dot">·</div>
+      <div class="feat">🌤️ Weather-aware packing</div>
+      <div class="feat-dot">·</div>
+      <div class="feat">🏨 Hotel recommendations</div>
+      <div class="feat-dot">·</div>
+      <div class="feat">🍽️ Local food guide</div>
+    </div>
+  </div>
+
+  <!-- Planner Form -->
+  <section class="planner-section" id="planner">
+    <div class="planner-label">✦ Trip Planner</div>
+    <h2 class="planner-title">Plan your trip</h2>
+
+    <div class="planner-grid">
+
+      <!-- Left: Form -->
+      <div class="form-panel">
+        <div class="form-group">
+          <label class="form-label">
+            <span class="label-icon">📍</span> Destination
+          </label>
+          <input class="form-input" type="text" id="destination" placeholder="Goa, Manali, Ooty, Jaipur..." value="Goa"/>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-icon">📅</span> Travel Date
+            </label>
+            <input class="form-input" type="date" id="travel_date"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-icon">🌙</span> Number of Days
+            </label>
+            <input class="form-input" type="number" id="days" min="1" max="14" value="4"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">
+            <span class="label-icon">💸</span> Total Budget (₹)
+          </label>
+          <input class="form-input" type="number" id="budget" placeholder="50000" value="50000"/>
+          <div class="budget-hints">
+            <button class="budget-chip" onclick="setBudget(25000)">₹25K</button>
+            <button class="budget-chip" onclick="setBudget(50000)">₹50K</button>
+            <button class="budget-chip" onclick="setBudget(100000)">₹1L</button>
+            <button class="budget-chip" onclick="setBudget(200000)">₹2L</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="travelers-header">
+            <label class="form-label">
+              <span class="label-icon">👥</span> Who's Coming?
+            </label>
+            <button class="add-btn" onclick="addMember()">+ Add traveler</button>
+          </div>
+          <div id="group-list"></div>
+        </div>
+
+        <button class="generate-btn" id="plan-btn" onclick="generatePlan()">
+          <span id="btn-text">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            Generate Trip Plan
+          </span>
+          <span id="btn-loader" class="hidden">
+            <span class="spinner"></span>
+            Planning your perfect trip...
+          </span>
+        </button>
+      </div>
+
+      <!-- Right: Preview card -->
+      <div class="preview-panel">
+        <div class="preview-card">
+          <div class="preview-img">
+            <div class="preview-overlay">
+              <div class="preview-dest" id="preview-dest">Goa</div>
+              <div class="preview-days" id="preview-days">4 days · ₹50,000</div>
+            </div>
+            <div class="preview-map-dots">
+              <div class="map-dot d1"></div>
+              <div class="map-dot d2"></div>
+              <div class="map-dot d3"></div>
+              <div class="map-dot d4"></div>
+              <div class="map-line l1"></div>
+              <div class="map-line l2"></div>
+              <div class="map-line l3"></div>
+            </div>
+          </div>
+          <div class="preview-body">
+            <div class="preview-section-title">What you'll get</div>
+            <div class="preview-items">
+              <div class="pi"><span class="pi-dot"></span> Full day-by-day itinerary</div>
+              <div class="pi"><span class="pi-dot"></span> Morning, afternoon & evening plans</div>
+              <div class="pi"><span class="pi-dot"></span> Age-appropriate activities</div>
+              <div class="pi"><span class="pi-dot"></span> Budget breakdown per category</div>
+              <div class="pi"><span class="pi-dot"></span> Best hotels for your group</div>
+              <div class="pi"><span class="pi-dot"></span> Local food recommendations</div>
+              <div class="pi"><span class="pi-dot"></span> Weather-based packing list</div>
+              <div class="pi"><span class="pi-dot"></span> Pro tips from AI</div>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Result -->
+  <section class="result-section">
+    <div id="result" class="hidden"></div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-logo">✦ TripMind AI</div>
+    <div class="footer-sub">Built for every kind of traveler</div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  <script>
+    // Set default date
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    document.getElementById("travel_date").value = tomorrow.toISOString().split("T")[0];
+
+    // Default group
+    const defaultGroup = [
+      { count: 1, type: "child (age 5)" },
+      { count: 2, type: "teenager (age 14-16)" },
+      { count: 2, type: "adult (age 35-40)" },
+      { count: 2, type: "senior (age 60-65)" }
+    ];
+    defaultGroup.forEach(m => addMember(m.count, m.type));
+
+    // Budget chips
+    function setBudget(val) {
+      document.getElementById("budget").value = val;
+      updatePreview();
+    }
+
+    // Live preview update
+    function updatePreview() {
+      const dest = document.getElementById("destination").value || "Your destination";
+      const days = document.getElementById("days").value || "?";
+      const budget = parseInt(document.getElementById("budget").value) || 0;
+      document.getElementById("preview-dest").textContent = dest;
+      document.getElementById("preview-days").textContent =
+        `${days} days · ₹${budget.toLocaleString("en-IN")}`;
+    }
+
+    document.getElementById("destination").addEventListener("input", updatePreview);
+    document.getElementById("days").addEventListener("input", updatePreview);
+    document.getElementById("budget").addEventListener("input", updatePreview);
+  </script>
+</body>
+</html>
