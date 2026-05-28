@@ -8,7 +8,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-client = genai.Client(api_key=os.environ.get("GOOGLE_API_KEY", ""))
+import os
+from google import genai
+
+api_key = os.getenv("GOOGLE_API_KEY")
+
+client = genai.Client(api_key=api_key)
 
 WEATHER_API_KEY = os.environ.get("OPENWEATHER_API_KEY", "")
 
