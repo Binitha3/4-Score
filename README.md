@@ -82,7 +82,7 @@ http://localhost:5000
 
 | Name              | Role                        |
 
-|-------------------|-----------------------------|
+|---------|---------|
 
 | Binitha E         | Full Stack \& AI Integration |
 
