@@ -51,7 +51,7 @@ Frontend renders beautiful day-by-day trip plan
 |Backend|Python, Flask|
 |AI Model|Google Gemini 2.5 Flash|
 |Weather|OpenWeatherMap API|
-|Deployment|Railway|
+|Deployment|Render|
 |Fonts|Playfair Display, DM Sans|
 
 \---
