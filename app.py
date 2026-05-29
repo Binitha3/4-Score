@@ -19,19 +19,37 @@ WEATHER_API_KEY = os.environ.get("OPENWEATHER_API_KEY", "")
 
 def get_weather(destination):
     if not WEATHER_API_KEY:
-        return {"description": "Sunny and warm", "temp": 30, "note": "Add OPENWEATHER_API_KEY for live weather"}
+        return {
+            "description": "Sunny and warm",
+            "temp": 30,
+            "note": "API key missing"
+        }
+
     try:
-        url = f"http://api.openweathermap.org/data/2.5/weather?q={destination}&appid={WEATHER_API_KEY}&units=metric"
+        url = f"https://api.openweathermap.org/data/2.5/weather?q={destination}&appid={WEATHER_API_KEY}&units=metric"
+
         res = requests.get(url, timeout=5)
+
+        print(res.status_code)
+        print(res.text)
+
         data = res.json()
+
         return {
             "description": data["weather"][0]["description"].capitalize(),
             "temp": round(data["main"]["temp"]),
             "humidity": data["main"]["humidity"],
             "note": "Live weather data"
         }
-    except Exception:
-        return {"description": "Warm and pleasant", "temp": 28, "note": "Weather fetch failed, using estimate"}
+
+    except Exception as e:
+        print("ERROR:", e)
+
+        return {
+            "description": "Weather unavailable",
+            "temp": "--",
+            "note": str(e)
+        }
 
 
 def build_prompt(destination, group, budget, days, weather):
