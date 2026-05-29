@@ -88,7 +88,7 @@ Return ONLY a valid JSON object (no markdown, no explanation, no code fences) wi
     "name": "Hotel/resort name",
     "type": "Type of stay",
     "why": "Why it suits this group",
-    "price_range": "₹XXXX per night"
+    "price_range": "₹XXXX"
   }},
   "packing_list": {{
     "essentials": ["item1", "item2"],
