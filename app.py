@@ -16,6 +16,7 @@ api_key = os.getenv("GOOGLE_API_KEY")
 client = genai.Client(api_key=api_key)
 
 WEATHER_API_KEY = os.environ.get("OPENWEATHER_API_KEY", "")
+print("API KEY=", WEATHER_API_KEY)
 
 def get_weather(destination):
     if not WEATHER_API_KEY:
