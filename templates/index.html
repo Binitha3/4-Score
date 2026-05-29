@@ -10,184 +10,295 @@
 </head>
 <body>
 
-  <!-- Animated background -->
-  <div class="bg-orbs">
-    <div class="orb orb1"></div>
-    <div class="orb orb2"></div>
-    <div class="orb orb3"></div>
-  </div>
-
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="nav-logo">
-      <span class="nav-icon">✦</span>
-      TripMind <span class="nav-ai">AI</span>
+    <div class="nav-logo">✈ TripMind <span>AI</span></div>
+    <div class="nav-links">
+      <a href="#planner" class="nav-cta">Plan My Trip →</a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
-    <div class="hero-tag">✦ AI-Powered Travel Planning</div>
-    <h1 class="hero-title">
-      Every traveler.<br/>
-      <em>One perfect trip.</em>
-    </h1>
-    <p class="hero-sub">Tell us who's coming — kids, teens, adults, seniors — we'll build a personalized itinerary for everyone, instantly.</p>
+    <!-- SVG Travel Scene Background -->
+    <svg class="hero-svg" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <!-- Sky gradient -->
+      <defs>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffecd2"/>
+          <stop offset="50%" stop-color="#fcb69f"/>
+          <stop offset="100%" stop-color="#ff9a9e"/>
+        </linearGradient>
+        <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#a1c4fd"/>
+          <stop offset="100%" stop-color="#c2e9fb"/>
+        </linearGradient>
+        <linearGradient id="mtn1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#b06060"/>
+          <stop offset="100%" stop-color="#8b4040"/>
+        </linearGradient>
+        <linearGradient id="mtn2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#c47a7a"/>
+          <stop offset="100%" stop-color="#a05555"/>
+        </linearGradient>
+        <linearGradient id="sunGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#ffe066"/>
+          <stop offset="100%" stop-color="#ffb347"/>
+        </linearGradient>
+      </defs>
 
-    <div class="hero-stats">
-      <div class="stat"><span class="stat-num">4x</span><span class="stat-label">Faster planning</span></div>
-      <div class="stat-div"></div>
-      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Age-appropriate</span></div>
-      <div class="stat-div"></div>
-      <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Destinations</span></div>
+      <!-- Sky -->
+      <rect width="1440" height="600" fill="url(#skyGrad)"/>
+
+      <!-- Sun -->
+      <circle cx="1100" cy="130" r="70" fill="url(#sunGrad)" opacity="0.9"/>
+      <circle cx="1100" cy="130" r="90" fill="#ffe066" opacity="0.15"/>
+      <circle cx="1100" cy="130" r="110" fill="#ffb347" opacity="0.08"/>
+
+      <!-- Clouds -->
+      <g opacity="0.85" class="cloud-slow">
+        <ellipse cx="200" cy="100" rx="80" ry="28" fill="white"/>
+        <ellipse cx="160" cy="95" rx="48" ry="36" fill="white"/>
+        <ellipse cx="230" cy="90" rx="42" ry="32" fill="white"/>
+        <ellipse cx="270" cy="100" rx="36" ry="24" fill="white"/>
+      </g>
+      <g opacity="0.75" class="cloud-medium">
+        <ellipse cx="600" cy="70" rx="60" ry="22" fill="white"/>
+        <ellipse cx="565" cy="65" rx="38" ry="28" fill="white"/>
+        <ellipse cx="628" cy="62" rx="34" ry="26" fill="white"/>
+      </g>
+      <g opacity="0.7" class="cloud-fast">
+        <ellipse cx="900" cy="90" rx="70" ry="24" fill="white"/>
+        <ellipse cx="865" cy="85" rx="44" ry="32" fill="white"/>
+        <ellipse cx="935" cy="82" rx="38" ry="28" fill="white"/>
+      </g>
+
+      <!-- Far mountains -->
+      <polygon points="0,420 180,200 360,420" fill="#c47a7a" opacity="0.6"/>
+      <polygon points="200,420 420,180 640,420" fill="#b06060" opacity="0.65"/>
+      <polygon points="500,420 700,160 900,420" fill="#c47a7a" opacity="0.55"/>
+      <polygon points="780,420 1000,190 1220,420" fill="#b06060" opacity="0.6"/>
+      <polygon points="1050,420 1250,210 1440,420" fill="#c47a7a" opacity="0.55"/>
+
+      <!-- Snow caps -->
+      <polygon points="180,200 200,230 160,230" fill="white" opacity="0.8"/>
+      <polygon points="420,180 445,215 395,215" fill="white" opacity="0.8"/>
+      <polygon points="700,160 728,198 672,198" fill="white" opacity="0.8"/>
+      <polygon points="1000,190 1025,224 975,224" fill="white" opacity="0.8"/>
+      <polygon points="1250,210 1272,242 1228,242" fill="white" opacity="0.8"/>
+
+      <!-- Near hills -->
+      <ellipse cx="200" cy="520" rx="320" ry="160" fill="#e8856e"/>
+      <ellipse cx="700" cy="540" rx="400" ry="140" fill="#d4705a"/>
+      <ellipse cx="1200" cy="510" rx="350" ry="170" fill="#e8856e"/>
+
+      <!-- Sea/water at bottom -->
+      <rect x="0" y="530" width="1440" height="70" fill="url(#seaGrad)" opacity="0.7"/>
+      <path d="M0,545 Q180,530 360,548 Q540,565 720,545 Q900,525 1080,545 Q1260,565 1440,545 L1440,600 L0,600Z" fill="#a1c4fd" opacity="0.5"/>
+
+      <!-- Trees -->
+      <g fill="#5a8a3c">
+        <polygon points="80,480 95,430 110,480"/>
+        <polygon points="75,490 95,445 115,490"/>
+        <rect x="91" y="490" width="8" height="20" fill="#7a5c3a"/>
+
+        <polygon points="1300,470 1315,418 1330,470"/>
+        <polygon points="1295,482 1315,435 1335,482"/>
+        <rect x="1311" y="482" width="8" height="20" fill="#7a5c3a"/>
+
+        <polygon points="1360,475 1375,425 1390,475"/>
+        <polygon points="1355,487 1375,440 1395,487"/>
+        <rect x="1371" y="487" width="8" height="20" fill="#7a5c3a"/>
+      </g>
+
+      <!-- Airplane with trail -->
+      <g class="plane-fly">
+        <!-- Trail -->
+        <line x1="-200" y1="170" x2="0" y2="170" stroke="white" stroke-width="1.5" stroke-dasharray="8,6" opacity="0.5"/>
+        <!-- Plane body -->
+        <g transform="translate(40, 160)">
+          <ellipse cx="0" cy="0" rx="22" ry="6" fill="white"/>
+          <polygon points="22,0 32,-3 32,3" fill="white"/>
+          <polygon points="-5,-6 10,-6 8,0" fill="white" opacity="0.9"/>
+          <polygon points="-5,6 10,6 8,0" fill="white" opacity="0.9"/>
+          <polygon points="-18,-3 -10,-8 -8,-3" fill="white" opacity="0.8"/>
+          <circle cx="-5" cy="0" r="3" fill="#a1c4fd"/>
+        </g>
+      </g>
+
+      <!-- Hot air balloon -->
+      <g class="balloon-float" transform="translate(350, 80)">
+        <ellipse cx="0" cy="0" rx="30" ry="38" fill="#ff6b9d" opacity="0.9"/>
+        <ellipse cx="0" cy="0" rx="30" ry="38" fill="none" stroke="#e85585" stroke-width="1.5"/>
+        <line x1="-10" y1="-38" x2="-10" y2="-38" stroke="#ff6b9d" stroke-width="1"/>
+        <path d="M-8,35 Q0,25 8,35" fill="#ffb347" stroke="#e8a020" stroke-width="1"/>
+        <path d="M-15,38 L-8,35 Q0,25 8,35 L15,38" fill="none" stroke="#8b5a2b" stroke-width="1.5"/>
+        <rect x="-12" y="38" width="24" height="14" rx="3" fill="#8b5a2b"/>
+        <!-- Stripes -->
+        <path d="M-30,0 Q-28,-38 -20,-38 Q-10,-20 0,-38 Q10,-20 20,-38 Q28,-38 30,0 Q20,10 0,12 Q-20,10 -30,0Z" fill="none" stroke="white" stroke-width="1" opacity="0.4"/>
+      </g>
+
+      <!-- Birds -->
+      <g fill="none" stroke="#5a3030" stroke-width="1.5" opacity="0.6" class="birds">
+        <path d="M500,140 Q505,135 510,140"/>
+        <path d="M515,133 Q521,128 527,133"/>
+        <path d="M530,143 Q536,138 542,143"/>
+        <path d="M820,110 Q826,105 832,110"/>
+        <path d="M840,120 Q846,115 852,120"/>
+      </g>
+
+      <!-- Compass rose in corner -->
+      <g transform="translate(80, 500)" opacity="0.3">
+        <circle cx="0" cy="0" r="22" fill="none" stroke="white" stroke-width="1"/>
+        <line x1="0" y1="-22" x2="0" y2="22" stroke="white" stroke-width="1"/>
+        <line x1="-22" y1="0" x2="22" y2="0" stroke="white" stroke-width="1"/>
+        <polygon points="0,-22 -4,-12 4,-12" fill="white"/>
+        <text x="-4" y="-25" fill="white" font-size="8" font-family="DM Sans">N</text>
+      </g>
+    </svg>
+
+    <!-- Hero text overlay -->
+    <div class="hero-content">
+      <div class="hero-tag">✈ AI-Powered Group Travel Planning</div>
+      <h1 class="hero-title">
+        Every traveler.<br/>
+        <em>One perfect trip.</em>
+      </h1>
+      <p class="hero-sub">Tell us who's coming — kids, teens, adults, seniors — we'll craft a personalized itinerary for everyone, instantly.</p>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">4X</span><span class="stat-label">Faster planning</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Age-appropriate</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Destinations</span></div>
+      </div>
+      <a href="#planner" class="hero-cta-btn">Start planning →</a>
     </div>
-
-    <a href="#planner" class="hero-cta">
-      Start planning
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
   </section>
 
-  <!-- Feature pills -->
+  <!-- Features strip -->
   <div class="features-strip">
-    <div class="features-inner">
-      <div class="feat">🗺️ Day-by-day itinerary</div>
-      <div class="feat-dot">·</div>
-      <div class="feat">🎯 Age-appropriate activities</div>
-      <div class="feat-dot">·</div>
-      <div class="feat">💰 Budget breakdown</div>
-      <div class="feat-dot">·</div>
-      <div class="feat">🌤️ Weather-aware packing</div>
-      <div class="feat-dot">·</div>
-      <div class="feat">🏨 Hotel recommendations</div>
-      <div class="feat-dot">·</div>
-      <div class="feat">🍽️ Local food guide</div>
-    </div>
+    <div class="feat">🗺️ Day-by-day itinerary</div><div class="feat-dot">·</div>
+    <div class="feat">🎯 Age-appropriate activities</div><div class="feat-dot">·</div>
+    <div class="feat">💰 Budget breakdown</div><div class="feat-dot">·</div>
+    <div class="feat">🌤️ Weather-aware packing</div><div class="feat-dot">·</div>
+    <div class="feat">🏨 Stay recommendations</div><div class="feat-dot">·</div>
+    <div class="feat">🍽️ Local food guide</div>
   </div>
 
   <!-- Planner Form -->
   <section class="planner-section" id="planner">
-    <div class="planner-label">✦ Trip Planner</div>
-    <h2 class="planner-title">Plan your trip</h2>
-
-    <div class="planner-grid">
-
-      <!-- Left: Form -->
-      <div class="form-panel">
-        <div class="form-group">
-          <label class="form-label">
-            <span class="label-icon">📍</span> Destination
-          </label>
-          <input class="form-input" type="text" id="destination" placeholder="Goa, Manali, Ooty, Jaipur..." value="Goa"/>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">
-              <span class="label-icon">📅</span> Travel Date
-            </label>
-            <input class="form-input" type="date" id="travel_date"/>
-          </div>
-          <div class="form-group">
-            <label class="form-label">
-              <span class="label-icon">🌙</span> Number of Days
-            </label>
-            <input class="form-input" type="number" id="days" min="1" max="14" value="4"/>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">
-            <span class="label-icon">💸</span> Total Budget (₹)
-          </label>
-          <input class="form-input" type="number" id="budget" placeholder="50000" value="50000"/>
-          <div class="budget-hints">
-            <button class="budget-chip" onclick="setBudget(25000)">₹25K</button>
-            <button class="budget-chip" onclick="setBudget(50000)">₹50K</button>
-            <button class="budget-chip" onclick="setBudget(100000)">₹1L</button>
-            <button class="budget-chip" onclick="setBudget(200000)">₹2L</button>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="travelers-header">
-            <label class="form-label">
-              <span class="label-icon">👥</span> Who's Coming?
-            </label>
-            <button class="add-btn" onclick="addMember()">+ Add traveler</button>
-          </div>
-          <div id="group-list"></div>
-        </div>
-
-        <button class="generate-btn" id="plan-btn" onclick="generatePlan()">
-          <span id="btn-text">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            Generate Trip Plan
-          </span>
-          <span id="btn-loader" class="hidden">
-            <span class="spinner"></span>
-            Planning your perfect trip...
-          </span>
-        </button>
+    <div class="planner-inner">
+      <div class="planner-header">
+        <div class="section-tag">✈ Trip Planner</div>
+        <h2>Plan your perfect trip</h2>
+        <p>Fill in your group details and let AI do the rest</p>
       </div>
-
-      <!-- Right: Preview card -->
-      <div class="preview-panel">
-        <div class="preview-card">
-          <div class="preview-img">
-            <div class="preview-overlay">
-              <div class="preview-dest" id="preview-dest">Goa</div>
-              <div class="preview-days" id="preview-days">4 days · ₹50,000</div>
+      <div class="planner-grid">
+        <div class="form-panel">
+          <div class="form-group">
+            <label class="form-label">📍 Destination</label>
+            <input class="form-input" type="text" id="destination" placeholder="Goa, Manali, Ooty, Jaipur..." value="Goa"/>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">📅 Travel Date</label>
+              <input class="form-input" type="date" id="travel_date"/>
             </div>
-            <div class="preview-map-dots">
-              <div class="map-dot d1"></div>
-              <div class="map-dot d2"></div>
-              <div class="map-dot d3"></div>
-              <div class="map-dot d4"></div>
-              <div class="map-line l1"></div>
-              <div class="map-line l2"></div>
-              <div class="map-line l3"></div>
+            <div class="form-group">
+              <label class="form-label">🌙 Number of Days</label>
+              <input class="form-input" type="number" id="days" min="1" max="14" value="4"/>
             </div>
           </div>
-          <div class="preview-body">
-            <div class="preview-section-title">What you'll get</div>
-            <div class="preview-items">
-              <div class="pi"><span class="pi-dot"></span> Full day-by-day itinerary</div>
-              <div class="pi"><span class="pi-dot"></span> Morning, afternoon & evening plans</div>
-              <div class="pi"><span class="pi-dot"></span> Age-appropriate activities</div>
-              <div class="pi"><span class="pi-dot"></span> Budget breakdown per category</div>
-              <div class="pi"><span class="pi-dot"></span> Best hotels for your group</div>
-              <div class="pi"><span class="pi-dot"></span> Local food recommendations</div>
-              <div class="pi"><span class="pi-dot"></span> Weather-based packing list</div>
-              <div class="pi"><span class="pi-dot"></span> Pro tips from AI</div>
+          <div class="form-group">
+            <label class="form-label">💸 Total Budget (₹)</label>
+            <input class="form-input" type="number" id="budget" placeholder="50000" value="50000"/>
+            <div class="budget-hints">
+              <button class="budget-chip" onclick="setBudget(25000)">₹25K</button>
+              <button class="budget-chip" onclick="setBudget(50000)">₹50K</button>
+              <button class="budget-chip" onclick="setBudget(100000)">₹1L</button>
+              <button class="budget-chip" onclick="setBudget(200000)">₹2L</button>
             </div>
           </div>
+          <div class="form-group">
+            <div class="travelers-header">
+              <label class="form-label">👥 Who's Coming?</label>
+              <button class="add-btn" onclick="addMember()">+ Add traveler</button>
+            </div>
+            <div id="group-list"></div>
+          </div>
+          <button class="generate-btn" id="plan-btn" onclick="generatePlan()">
+            <span id="btn-text">✈ Generate My Trip Plan</span>
+            <span id="btn-loader" class="hidden"><span class="spinner"></span> Planning your perfect trip...</span>
+          </button>
         </div>
 
-        
+        <div class="preview-panel">
+          <div class="preview-card">
+            <div class="preview-map">
+              <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="pmSky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#ffecd2"/>
+                    <stop offset="100%" stop-color="#fcb69f"/>
+                  </linearGradient>
+                </defs>
+                <rect width="340" height="160" fill="url(#pmSky)"/>
+                <circle cx="270" cy="40" r="28" fill="#ffe066" opacity="0.8"/>
+                <ellipse cx="60" cy="30" rx="45" ry="16" fill="white" opacity="0.8"/>
+                <ellipse cx="45" cy="28" rx="28" ry="20" fill="white" opacity="0.8"/>
+                <ellipse cx="200" cy="20" rx="38" ry="14" fill="white" opacity="0.7"/>
+                <polygon points="0,110 80,55 160,110" fill="#c47a7a" opacity="0.7"/>
+                <polygon points="100,110 200,45 300,110" fill="#b06060" opacity="0.75"/>
+                <polygon points="220,110 320,60 420,110" fill="#c47a7a" opacity="0.65"/>
+                <polygon points="80,55 92,72 68,72" fill="white" opacity="0.85"/>
+                <polygon points="200,45 214,65 186,65" fill="white" opacity="0.85"/>
+                <ellipse cx="60" cy="135" rx="120" ry="50" fill="#e8856e" opacity="0.7"/>
+                <ellipse cx="280" cy="140" rx="110" ry="45" fill="#d4705a" opacity="0.7"/>
+                <rect x="0" y="140" width="340" height="20" fill="#a1c4fd" opacity="0.6"/>
+                <g class="pm-plane">
+                  <ellipse cx="0" cy="0" rx="12" ry="4" fill="white" transform="translate(50,75)"/>
+                  <polygon points="12,0 18,-2 18,2" fill="white" transform="translate(50,75)"/>
+                  <polygon points="-2,-4 6,-4 5,0" fill="white" opacity="0.9" transform="translate(50,75)"/>
+                </g>
+              </svg>
+              <div class="preview-dest-info">
+                <div class="preview-dest" id="preview-dest">Goa</div>
+                <div class="preview-days" id="preview-days">4 days · ₹50,000</div>
+              </div>
+            </div>
+            <div class="preview-body">
+              <div class="preview-title">What you'll get</div>
+              <div class="preview-items">
+                <div class="pi"><span>✈</span> Full day-by-day itinerary</div>
+                <div class="pi"><span>🎯</span> Age-appropriate activities</div>
+                <div class="pi"><span>💰</span> Smart budget breakdown</div>
+                <div class="pi"><span>🏨</span> Hotel & stay recommendations</div>
+                <div class="pi"><span>🍽️</span> Local food guide</div>
+                <div class="pi"><span>🎒</span> Packing list & pro tips</div>
+              </div>
+            </div>
+            <div class="preview-footer">Powered by Gemini AI ✦</div>
+          </div>
+        </div>
       </div>
-
     </div>
   </section>
 
-  <!-- Result -->
   <section class="result-section">
     <div id="result" class="hidden"></div>
   </section>
 
   <footer class="footer">
-    <div class="footer-logo">✦ TripMind AI</div>
-    <div class="footer-sub">Built for every kind of traveler</div>
+    <div class="footer-logo">✈ TripMind AI</div>
+    <div class="footer-sub">Built for every kind of traveler · Hackathon 2026</div>
   </footer>
 
   <script src="/static/js/app.js"></script>
   <script>
-    // Set default date
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     document.getElementById("travel_date").value = tomorrow.toISOString().split("T")[0];
-
-    // Default group
     const defaultGroup = [
       { count: 1, type: "child (age 5)" },
       { count: 2, type: "teenager (age 14-16)" },
@@ -195,23 +306,14 @@
       { count: 2, type: "senior (age 60-65)" }
     ];
     defaultGroup.forEach(m => addMember(m.count, m.type));
-
-    // Budget chips
-    function setBudget(val) {
-      document.getElementById("budget").value = val;
-      updatePreview();
-    }
-
-    // Live preview update
+    function setBudget(val) { document.getElementById("budget").value = val; updatePreview(); }
     function updatePreview() {
       const dest = document.getElementById("destination").value || "Your destination";
       const days = document.getElementById("days").value || "?";
       const budget = parseInt(document.getElementById("budget").value) || 0;
       document.getElementById("preview-dest").textContent = dest;
-      document.getElementById("preview-days").textContent =
-        `${days} days · ₹${budget.toLocaleString("en-IN")}`;
+      document.getElementById("preview-days").textContent = `${days} days · ₹${budget.toLocaleString("en-IN")}`;
     }
-
     document.getElementById("destination").addEventListener("input", updatePreview);
     document.getElementById("days").addEventListener("input", updatePreview);
     document.getElementById("budget").addEventListener("input", updatePreview);
